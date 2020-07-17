@@ -7,6 +7,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
 	exports: [
@@ -18,6 +20,8 @@ import { MatCardModule } from '@angular/material/card';
 		MatMenuModule,
 		MatListModule,
 		MatCardModule,
+		DragDropModule,
+		MatFormFieldModule,
 	],
 })
 export class MaterialModule {}
