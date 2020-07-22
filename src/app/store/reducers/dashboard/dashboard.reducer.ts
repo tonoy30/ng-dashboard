@@ -5,11 +5,19 @@ export const dashboardFeatureKey = 'dashboard';
 
 // tslint:disable-next-line: no-empty-interface
 export interface DashboardState {
+	loading: boolean;
 	data: any[];
+	error: {
+		name: string;
+		message: string;
+		status?: string;
+	};
 }
 
 export const initialState: DashboardState = {
-	data: [],
+	loading: false,
+	data: undefined,
+	error: undefined,
 };
 
 export function DashboardReducer(
@@ -17,9 +25,28 @@ export function DashboardReducer(
 	action: Action
 ): DashboardState {
 	switch (action.type) {
+		case DashboardActionTypes.LoadDashboards:
+			return {
+				...state,
+				loading: false,
+			};
 		case DashboardActionTypes.LoadDashboardsSuccess:
-			// @ts-ignore
-			return action.payload;
+			return {
+				loading: true,
+				// @ts-ignore
+				data: action.payload,
+				error: undefined,
+			};
+		case DashboardActionTypes.LoadDashboardsFailure:
+			return {
+				loading: false,
+				data: undefined,
+				error: {
+					// @ts-ignore
+					...action.payload.error,
+				},
+			};
+
 		default:
 			return state;
 	}

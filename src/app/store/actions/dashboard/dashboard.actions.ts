@@ -17,7 +17,11 @@ export class LoadDashboardsSuccess implements Action {
 
 export class LoadDashboardsFailure implements Action {
 	readonly type = DashboardActionTypes.LoadDashboardsFailure;
-	constructor(public payload: { error: any }) {}
+	constructor(
+		public payload: {
+			error: { name: string; message: string; status: number };
+		}
+	) {}
 }
 
 export type DashboardActions =

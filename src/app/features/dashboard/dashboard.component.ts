@@ -5,6 +5,7 @@ import { Series } from './../../core/models/series';
 import { FeaturesService } from './../features.service';
 import { AppState } from './../../store/reducers/index';
 import {
+	LoadDashboards,
 	LoadDashboardsSuccess,
 	LoadDashboardsFailure,
 } from './../../store/actions/dashboard/dashboard.actions';
@@ -34,9 +35,17 @@ export class DashboardComponent implements OnInit {
 					this.store.dispatch(new LoadDashboardsSuccess(user));
 				})
 			)
-			.subscribe(noop, (error) => {
-				alert('Failed');
-				this.store.dispatch(new LoadDashboardsFailure(error));
-			});
+			.subscribe(
+				noop,
+				(error) => {
+					const { name, status, message } = error;
+					this.store.dispatch(
+						new LoadDashboardsFailure({
+							error: { name, message, status },
+						})
+					);
+				},
+				() => this.store.dispatch(new LoadDashboards())
+			);
 	}
 }
