@@ -1,12 +1,14 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Card } from './../core/models/card';
 import { Series } from './../core/models/series';
-import { Injectable } from '@angular/core';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class FeaturesService {
-	constructor() {}
+	constructor(private http: HttpClient) {}
 	getAreaChartData(): Series[] {
 		return [
 			{
@@ -43,5 +45,8 @@ export class FeaturesService {
 				},
 			],
 		};
+	}
+	getUsers() {
+		return this.http.get('https://jsonplaceholder.typicode.com/users');
 	}
 }

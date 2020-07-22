@@ -12,7 +12,7 @@ export class LoadDashboards implements Action {
 
 export class LoadDashboardsSuccess implements Action {
 	readonly type = DashboardActionTypes.LoadDashboardsSuccess;
-	constructor(public payload: { data: any }) {}
+	constructor(public payload: any) {}
 }
 
 export class LoadDashboardsFailure implements Action {

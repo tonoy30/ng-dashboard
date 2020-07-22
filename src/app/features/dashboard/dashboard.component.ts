@@ -4,6 +4,13 @@ import { Store } from '@ngrx/store';
 import { Series } from './../../core/models/series';
 import { FeaturesService } from './../features.service';
 import { AppState } from './../../store/reducers/index';
+import {
+	LoadDashboardsSuccess,
+	LoadDashboardsFailure,
+} from './../../store/actions/dashboard/dashboard.actions';
+import { noop } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
 @Component({
 	selector: 'app-dashboard',
 	templateUrl: './dashboard.component.html',
@@ -20,5 +27,16 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.areaChartData = this.service.getAreaChartData();
+		this.service
+			.getUsers()
+			.pipe(
+				tap((user) => {
+					this.store.dispatch(new LoadDashboardsSuccess(user));
+				})
+			)
+			.subscribe(noop, (error) => {
+				alert('Failed');
+				this.store.dispatch(new LoadDashboardsFailure(error));
+			});
 	}
 }
