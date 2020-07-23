@@ -9,6 +9,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
 	exports: [
@@ -22,6 +26,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 		MatCardModule,
 		DragDropModule,
 		MatFormFieldModule,
+		MatTableModule,
+		MatCheckboxModule,
+		MatSelectModule,
+		MatDialogModule,
 	],
 })
 export class MaterialModule {}
