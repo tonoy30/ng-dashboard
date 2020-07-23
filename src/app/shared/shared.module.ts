@@ -9,6 +9,7 @@ import { CardComponent } from './widgets/card/card.component';
 import { InputComponent } from './components/input/input.component';
 import { PieComponent } from './widgets/pie/pie.component';
 import { TableComponent } from './widgets/table/table.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
 	declarations: [
@@ -17,6 +18,7 @@ import { TableComponent } from './widgets/table/table.component';
 		InputComponent,
 		PieComponent,
 		TableComponent,
+		DialogComponent,
 	],
 	imports: [
 		CommonModule,
